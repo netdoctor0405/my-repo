@@ -1,0 +1,10 @@
+#!/bin/bash
+# Define variables
+S3_BUCKET="johnlee2024"
+DESTINATION="/var/www/html/"
+
+# Copy all files from S3 bucket to the destination directory
+aws s3 cp s3://$S3_BUCKET $DESTINATION --recursive
+
+# Set correct permissions if necessary
+chmod -R 755 $DESTINATION
