@@ -3,10 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
-    commands:
-      - npm install -g npm@10
-  pre_build:
+      nodejs: 14
     commands:
       - npm install
   build:
@@ -14,8 +11,9 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo "Build completed."
-
+      - echo Preparing deployment artifacts...
+      - mkdir -p /output
+      - cp -r * /output/
 artifacts:
   files:
-    - dist/**
+    - /output/**
